@@ -6,6 +6,10 @@ function App() {
         <>
           <Mango />
           <Apple />
+          <Mango />
+          <Apple />
+          <Mango />
+          <Apple />
         </>
         )
 }

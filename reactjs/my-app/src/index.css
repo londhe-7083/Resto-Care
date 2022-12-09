@@ -1,0 +1,14 @@
+body {
+    background-color: #ffff80;
+}
+
+#root{
+    display: flex;
+    padding: 30px;
+}
+
+h1{
+    padding: 20px;
+    border-style: double;
+    border-radius: 10px;
+}
