@@ -1,0 +1,10 @@
+.about{
+    background-color: rgb(43, 255, 0);
+    min-height: 50vw;
+}
+
+.about h1{
+    color: rgb(153, 0, 255);
+    text-align: center;
+    font-size: 50px;
+}

@@ -1,0 +1,16 @@
+.home{
+    background-color: rgb(0, 153, 255);
+    min-height: 100vh;
+}
+
+.home h1{
+    color: antiquewhite;
+    text-align: center;
+    font-size: 50px;
+}
+
+a{
+    margin: 10px;
+    font-weight: 500;
+    text-decoration: none;
+}

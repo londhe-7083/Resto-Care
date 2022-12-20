@@ -1,0 +1,17 @@
+.contact{
+   background-color: rgb(223, 14, 14);
+   min-height: 50vw;
+}
+
+.contact h1{
+    color: aquamarine;
+    text-align: center;
+    font-size: 60px;
+}
+
+link{
+    padding: 10px;
+    color:rgb(17, 31, 219);
+    font-size: 30px;
+
+}
