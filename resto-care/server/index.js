@@ -22,20 +22,21 @@ app.post('/signup', async (req, res) => {
 
     const emptyFields = [];
 
-    if(!name) emptyFields.push('name');
+    if(!name) emptyFields.push('name');  //two inputs jar blank astil tar he function donhi pan dakhwte
     if(!phone) emptyFields.push('phone');
     if(!email) emptyFields.push('email');
     if(!password) emptyFields.push('password');
     if(!role) emptyFields.push('role');
 
-    if(emptyFields.length > 0){
+    if(emptyFields.length > 0){     
         return res.json({
             success: false,
             message: `${emptyFields.join(' & ')} are required`
         })
     }
 
-    if (!name) {
+    /*
+    if (!name) {                            //je input blank ahe te te dakhwto
         return res.json({
             success: false,
             message: "name is required"
@@ -68,7 +69,28 @@ app.post('/signup', async (req, res) => {
             success: false,
             message: "role is required"
         })
+    } */
+
+    //validatiion to check if all fields are filled ends here 
+
+    //validation to check if email already exists starts here
+    const existingUser = await User.findOne({ email: email});
+    if (existingUser) {
+        return res.json({
+            success: false,
+            message: "Email already exists"
+        })
     }
+
+    //validation to check phone already exists starts here 
+    const existingUserPhone = await User.findOne({phone: phone});
+    if (existingUserPhone) {
+        return res.json({
+            success:false,
+            message: "phone aleready exists"
+        })
+    }
+    //valistion to check if phone already exists ends here 
 
     const user = new User({
         name: name,
@@ -88,7 +110,36 @@ app.post('/signup', async (req, res) => {
 })
 
 
+app.post('/login', async(req, res) => {
+    const {email, password} = req.body;
 
+    if (!email || !password) {
+        return res.json({ 
+            success: false,
+            message: "Email and password are required"
+        })
+    }
+
+    const existingUser = await User.findOne({ email: email, password: password });
+
+    if(existingUser) {
+        return res.json({ 
+        success: true,
+        message: "Login successful",
+        data: existingUser
+    })
+  }//shubhamlondhe@g5mail.com
+  else {
+    return res.json({
+        success: false,
+        message: "Invalid email or password"
+    })
+  }
+
+
+})
+
+//api routes ends here
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 
