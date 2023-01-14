@@ -2,6 +2,7 @@ import express from 'express';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import User from './modules/User.js';
+import FoodItem from './modules/FoodItem.js';
 dotenv.config();
 
 
@@ -22,13 +23,13 @@ app.post('/signup', async (req, res) => {
 
     const emptyFields = [];
 
-    if(!name) emptyFields.push('name');  //two inputs jar blank astil tar he function donhi pan dakhwte
-    if(!phone) emptyFields.push('phone');
-    if(!email) emptyFields.push('email');
-    if(!password) emptyFields.push('password');
-    if(!role) emptyFields.push('role');
+    if (!name) emptyFields.push('name');  //two inputs jar blank astil tar he function donhi pan dakhwte
+    if (!phone) emptyFields.push('phone');
+    if (!email) emptyFields.push('email');
+    if (!password) emptyFields.push('password');
+    if (!role) emptyFields.push('role');
 
-    if(emptyFields.length > 0){     
+    if (emptyFields.length > 0) {
         return res.json({
             success: false,
             message: `${emptyFields.join(' & ')} are required`
@@ -74,7 +75,7 @@ app.post('/signup', async (req, res) => {
     //validatiion to check if all fields are filled ends here 
 
     //validation to check if email already exists starts here
-    const existingUser = await User.findOne({ email: email});
+    const existingUser = await User.findOne({ email: email });
     if (existingUser) {
         return res.json({
             success: false,
@@ -83,10 +84,10 @@ app.post('/signup', async (req, res) => {
     }
 
     //validation to check phone already exists starts here 
-    const existingUserPhone = await User.findOne({phone: phone});
+    const existingUserPhone = await User.findOne({ phone: phone });
     if (existingUserPhone) {
         return res.json({
-            success:false,
+            success: false,
             message: "phone aleready exists"
         })
     }
@@ -110,11 +111,11 @@ app.post('/signup', async (req, res) => {
 })
 
 
-app.post('/login', async(req, res) => {
-    const {email, password} = req.body;
+app.post('/login', async (req, res) => {
+    const { email, password } = req.body;
 
     if (!email || !password) {
-        return res.json({ 
+        return res.json({
             success: false,
             message: "Email and password are required"
         })
@@ -122,24 +123,43 @@ app.post('/login', async(req, res) => {
 
     const existingUser = await User.findOne({ email: email, password: password });
 
-    if(existingUser) {
-        return res.json({ 
+    if (existingUser) {
+        return res.json({
+            success: true,
+            message: "Login successful",
+            data: "existingUser"
+        })
+    }//shubhamlondhe@g5mail.com
+    else {
+        return res.json({
+            success: false,
+            message: "Invalid email or password"
+        })
+    }
+})
+
+app.post("/createFoodItem", async (req, res) => {
+    const { title, description, imgUrl, price, category } = req.body;
+
+    const foodItem = new FoodItem({
+        title: title,
+        description: description,
+        imgUrl: imgUrl,
+        price: price,
+        category: category
+    })
+
+    const savedFoodItem = await foodItem.save();
+
+    res.json({
         success: true,
-        message: "Login successful",
-        data: existingUser
+        message: "Food Item created successfully",
+        data: savedFoodItem
     })
-  }//shubhamlondhe@g5mail.com
-  else {
-    return res.json({
-        success: false,
-        message: "Invalid email or password"
-    })
-  }
-
-
 })
 
 //api routes ends here
+
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 
