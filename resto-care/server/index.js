@@ -158,10 +158,42 @@ app.post("/createFoodItem", async (req, res) => {
     })
 })
 
+//http://localhost:5000/foodItemsByCategory?category=pizza
+app.get("/foodItemsByCategory " , async(req, res)=> {
+    const {category} = req.query;
+
+    const foodItems = await FoodItem.find({
+        category:{$regex: title, $options: 'i'}
+    })
+
+    res.json( 
+        {
+            success: true,
+            message:"food Items fetched succesfully",
+            data: foodItems
+        })
+})
+
+//http://localhost:5000/foodItemsBy?title=paneer pizza
+app.get("/foodItems",async(req,res)=>{
+    const {title} = req.query;
+
+    const foodItems = await FoodItem.find({
+        title: {$regex: title, $options: 'i'}
+    })
+
+    res.json({
+        success: true,
+        message: " food items fetched successfully",
+        data: foodItems
+    })
+})
 //api routes ends here
 
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 
 })
+
+
 
