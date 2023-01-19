@@ -3,6 +3,7 @@ import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import User from './modules/User.js';
 import FoodItem from './modules/FoodItem.js';
+import Table from './modules/table.js';
 dotenv.config();
 
 
@@ -158,8 +159,8 @@ app.post("/createFoodItem", async (req, res) => {
     })
 })
 
-//http://localhost:5000/foodItemsByCategory?category=pizza
-app.get("/foodItemsByCategory " , async(req, res)=> {
+    //http://localhost:5000/foodItemsByCategory?category=pizza
+    app.get("/foodItemsByCategory",async(req, res)=>{
     const {category} = req.query;
 
     const foodItems = await FoodItem.find({
@@ -174,8 +175,8 @@ app.get("/foodItemsByCategory " , async(req, res)=> {
         })
 })
 
-//http://localhost:5000/foodItemsBy?title=paneer pizza
-app.get("/foodItems",async(req,res)=>{
+    //http://localhost:5000/foodItemsBy?title=paneer pizza
+    app.get("/foodItems",async(req,res)=>{
     const {title} = req.query;
 
     const foodItems = await FoodItem.find({
@@ -188,6 +189,25 @@ app.get("/foodItems",async(req,res)=>{
         data: foodItems
     })
 })
+
+app.post(".createTable", async(req, res)=>{
+    const {tableNumber, occupied, occupiedBy}=req.body;
+
+    const table = new Table({
+        tableNumber: tableNumber,
+        occupied: occupied,
+        occupiedBy: occupiedBy
+    })
+
+    const savedTable = await table.save();
+
+    res.json({
+        success: true,
+        message: "table created succesfull",
+        data : savedTable
+    })
+})
+
 //api routes ends here
 
 app.listen(PORT, () => {
