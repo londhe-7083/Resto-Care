@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import User from './modules/User.js';
 import FoodItem from './modules/FoodItem.js';
-import Table from './modules/table.js';
+import Table from './modules/Table.js';
 dotenv.config();
 
 
@@ -159,28 +159,28 @@ app.post("/createFoodItem", async (req, res) => {
     })
 })
 
-    //http://localhost:5000/foodItemsByCategory?category=pizza
-    app.get("/foodItemsByCategory",async(req, res)=>{
-    const {category} = req.query;
+//http://localhost:5000/foodItemsByCategory?category=pizza
+app.get("/foodItemsByCategory", async (req, res) => {
+    const { category } = req.query;
 
     const foodItems = await FoodItem.find({
-        category:{$regex: title, $options: 'i'}
+        category: { $regex: title, $options: 'i' }
     })
 
-    res.json( 
+    res.json(
         {
             success: true,
-            message:"food Items fetched succesfully",
+            message: "food Items fetched succesfully",
             data: foodItems
         })
 })
 
-    //http://localhost:5000/foodItemsBy?title=paneer pizza
-    app.get("/foodItems",async(req,res)=>{
-    const {title} = req.query;
+//http://localhost:5000/foodItemsBy?title=paneer pizza
+app.get("/foodItems", async (req, res) => {
+    const { title } = req.query;
 
     const foodItems = await FoodItem.find({
-        title: {$regex: title, $options: 'i'}
+        title: { $regex: title, $options: 'i' }
     })
 
     res.json({
@@ -190,23 +190,84 @@ app.post("/createFoodItem", async (req, res) => {
     })
 })
 
-app.post(".createTable", async(req, res)=>{
-    const {tableNumber, occupied, occupiedBy}=req.body;
+app.post("/createTable", async (req, res) => {
+    const { tableNumber } = req.body;
+
+    const existingTable = await Table.findOne({ tableNumber: tableNumber });
+    if (existingTable) {
+        return res.json({
+            success: false,
+            message: "table aleready exists"
+        })
+    }
 
     const table = new Table({
         tableNumber: tableNumber,
-        occupied: occupied,
-        occupiedBy: occupiedBy
+        occupied: false
     })
+
 
     const savedTable = await table.save();
 
     res.json({
         success: true,
         message: "table created succesfull",
-        data : savedTable
+        data: savedTable
     })
 })
+
+app.post("/booktable", async (req, res) => {
+    const { tableNumber, userId } = req.body;
+
+    const existingTable = await Table.findOne({ tableNumber: tableNumber });
+    if (existingTable && existingTable.occupied) {
+        return res.json({
+            success: false,
+            message: "table already occupied"
+        })
+    }
+    if (existingTable) {
+        existingTable.occupied = true;
+        existingTable.occupiedBy = userId;
+        await existingTable.save();
+    }
+
+    res.json({
+        success: true,
+        message: "table booked successfully",
+        data: existingTable
+    })
+
+})
+
+app.post("/unbookTable", async (req, res) => {
+
+    const {tableNumber} = req.body;
+
+    const existingTable = await Table.findOne({tableNumber: tableNumber });
+    if(existingTable){
+
+        existingTable.occupied = false;
+        existingTable.occupiedBy = null;
+        await existingTable.save();
+    }  
+res.json({
+    success: true,
+    message: "Table unbooked successfully",
+    data: existingTable
+})
+    
+});
+
+app.get("/availableTable", async(req, res) =>{
+    const availableTables = await Table.find({occupied: false});
+
+    res.json({
+        success: true,
+        message:"Available tables fetched successfully",
+        data: availableTables
+    })
+});
 
 //api routes ends here
 
