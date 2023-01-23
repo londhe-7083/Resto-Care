@@ -1,0 +1,27 @@
+.form-container{
+    background: linear-gradient(to top right, #ff66ff 0%, #ffcc99 100%);
+    width: 400px;
+    padding: 20px;
+    border-radius:8px;
+    margin: 0 auto;
+
+}
+
+.user-input{
+    display: block;
+    width: 250px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+.signup-button{
+    font-size: 15px;
+    background-color: #66ccff;
+    padding: 2px;
+    margin: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    color: white;
+    display: block;
+    
+}
