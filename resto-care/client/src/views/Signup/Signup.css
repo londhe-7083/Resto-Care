@@ -1,17 +1,35 @@
-.form-container{
-    background: linear-gradient(to top right, #ff66ff 0%, #ffcc99 100%);
+.form-containeer{
     width: 400px;
     padding: 20px;
     border-radius:8px;
     margin: 0 auto;
+    margin-left: 25%;
+    margin-top: 19px;
 
+}
+
+.text {
+    font-size:12px ;
+    color: #464141cc;
+}
+
+form{
+    margin: 10px;
+    align-items: center;
 }
 
 .user-input{
     display: block;
     width: 250px;
     border-radius: 4px;
-    border: 1px solid #ccc;
+    border: none;
+    height:44px;
+    margin: 2px;
+    background-color: #cccccc21;
+}
+
+.input-box{
+    background-color: #cccccc21;
 }
 
 .signup-button{
@@ -24,4 +42,15 @@
     color: white;
     display: block;
     
+}
+
+img{
+    height: 10%;
+}
+
+.maindiv{
+    border: 3px solid rgb(44, 44, 168);
+    height: 550px;
+    margin: 20px;
+    border-radius: 10px;
 }

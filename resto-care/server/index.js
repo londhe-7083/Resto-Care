@@ -23,7 +23,7 @@ app.post('/signup', async (req, res) => {
     const { name, phone, email, password, role } = req.body;
 
     const emptyFields = [];
-
+    
     if (!name) emptyFields.push('name');  //two inputs jar blank astil tar he function donhi pan dakhwte
     if (!phone) emptyFields.push('phone');
     if (!email) emptyFields.push('email');
