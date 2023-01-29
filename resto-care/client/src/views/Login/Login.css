@@ -1,9 +1,28 @@
-.form-container{
-    background: linear-gradient(to top right, #ff66ff 0%, #ffcc99 100%);
+*{
+    margin: 0;
+    padding: 0;
+}
+.form-containeer{
     width: 400px;
     padding: 20px;
     border-radius:8px;
     margin: 0 auto;
+    margin-left: 25%;
+}
+
+.text {
+    font-size:12px ;
+    color: #464141cc;
+}
+
+form{
+    margin: 10px;
+    align-items: center;
+}
+
+.avtar img{
+    height: 100px;
+    margin-left: 114px;
 
 }
 
@@ -11,9 +30,34 @@
     display: block;
     width: 250px;
     border-radius: 4px;
-    border: 1px solid #ccc;
+    border: none;
+    outline: none;
+    height:28px;
+    margin: 2px;
+    margin-left: 31px;
+    padding-bottom: 9px;
+    background-color: #cccccc00;
 }
 
+.input-box{
+    background-color: #cccccc63;
+}
+
+.input-box i{
+    padding: 10px;
+    color: #7871717a;
+
+}
+
+.input-box-a{
+    border-top-right-radius: 50px;
+    border-top-left-radius: 15px;
+}
+
+.input-box-d{
+    border-bottom-right-radius: 15px;
+    border-bottom-left-radius: 50px;
+}
 .login-button{
     font-size: 15px;
     background-color: #66ccff;
@@ -26,3 +70,18 @@
     
 }
 
+.image img{
+    height: 10%;
+    margin-top: 103px;
+}
+
+.maindiv{
+    border: 3px solid rgb(44, 44, 168);
+    height: 550px;
+    margin: 20px;
+    border-radius: 10px;
+}
+
+.row{
+    height: 100px;
+}

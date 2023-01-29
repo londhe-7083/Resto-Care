@@ -34,6 +34,8 @@ form{
     outline: none;
     height:28px;
     margin: 2px;
+    margin-left: 31px;
+    padding-bottom: 9px;
     background-color: #cccccc00;
 }
 
@@ -44,10 +46,17 @@ form{
 .input-box i{
     padding: 10px;
     color: #7871717a;
+
 }
 
 .input-box-a{
-    border-top-right-radius: 20px;
+    border-top-right-radius: 50px;
+    border-top-left-radius: 15px;
+}
+
+.input-box-d{
+    border-bottom-right-radius: 15px;
+    border-bottom-left-radius: 50px;
 }
 .signup-button{
     font-size: 15px;
@@ -71,4 +80,8 @@ form{
     height: 550px;
     margin: 20px;
     border-radius: 10px;
+}
+
+.row{
+    height: 100px;
 }

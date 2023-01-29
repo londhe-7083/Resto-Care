@@ -39,7 +39,7 @@ function Signup() {
   return (
     <div>
       <div className='maindiv'>
-        <div className='row'>
+        <div className='row '>
           <div className=' col-6 image'>
             <img src={require('./images/firstimg.jpg')} alt='' ></img>
           </div>
@@ -72,7 +72,7 @@ function Signup() {
                   <input type='phone' id='phone' className='user-input' value={phone} onChange={(e) => setPhone(e.target.value)} />
                 </div>
 
-                <div className='input-box '>
+                <div className='input-box input-box-d '>
                    <i class="fa-solid fa-lock"></i>
                   <label htmlFor='password'>Password: </label>
                   <input type='password' id='password' className='user-input' value={password} onChange={(e) => setPassword(e.target.value)} />
