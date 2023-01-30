@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import "./Signup.css"
 
@@ -8,7 +8,15 @@ function Signup() {
   const [email, setEmail] = useState('')
   const [phone, setPhone] = useState('')
   const [password, setPassword] = useState('')
-  const [role, setRole] = useState('user')
+  const [role, setRole] = useState('user') 
+  
+  useEffect(() =>{
+    const currentUser =JSON.parse(localStorage.getItem('currentUser'))
+     if(currentUser){
+      window.location.href="/"
+     }
+     },[])  
+
 
   async function signupUser() {
     const response = await axios.post('/signup', {
@@ -48,19 +56,19 @@ function Signup() {
           <div className='col-6' >
             <div className='form-containeer'>
               <div className='avtar'>
-                <img src={require('./images/avtar.png')} alt='' ></img>
+                <img src={require('./images/avtaar.png')} alt='' ></img>
               </div>
               <form>
-              <h1 className='text-center'>Welcome</h1>
+              <h1 className='text-center '>Welcome</h1>
                 <div className='input-box input-box-a'>
-                  <i class="fa-regular fa-user"></i>
+                <i class="fa-solid fa-user"></i>
                   <label htmlFor='name'>Full Name: </label>
                   <input type='text' id='name' className='user-input' value={name}
                     onChange={(e) => setName(e.target.value)} />
                 </div>
 
                 <div className='input-box'>
-                  <i class="fa-regular fa-envelope"></i>
+                <i class="fa-solid fa-envelope"></i>
                   <label htmlFor='email'>Email Address: </label>
                   <input type='email' id='email' value=
                     {email} className='user-input' onChange={(e) => setEmail(e.target.value)} />
@@ -77,8 +85,9 @@ function Signup() {
                   <label htmlFor='password'>Password: </label>
                   <input type='password' id='password' className='user-input' value={password} onChange={(e) => setPassword(e.target.value)} />
                 </div>
-                <div>
+                <div className='signup'>
                   <button type='button' className='signup-button' onClick={signupUser}> Signup </button>
+                <h5 className='textline'> already have account? <span>Login</span></h5>
                 </div>
               </form>
             </div>

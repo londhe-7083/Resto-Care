@@ -1,6 +1,8 @@
 *{
     margin: 0;
     padding: 0;
+    font-family: 'Roboto Condensed', sans-serif;
+
 }
 .form-containeer{
     width: 400px;
@@ -13,6 +15,10 @@
 .text {
     font-size:12px ;
     color: #464141cc;
+}
+
+h1{
+    font-weight: 900;
 }
 
 form{
@@ -54,7 +60,7 @@ form{
     border-top-left-radius: 15px;
 }
 
-.input-box-d{
+.input-box-b{
     border-bottom-right-radius: 15px;
     border-bottom-left-radius: 50px;
 }
@@ -67,6 +73,12 @@ form{
     border: 1px solid #ccc;
     color: white;
     display: block;
+    margin-left: 36px;
+    width: 12vw;
+    border-top-right-radius: 50px;
+    border-top-left-radius: 16px;
+    border-bottom-left-radius: 50px;
+    border-bottom-right-radius: 16px;
     
 }
 
@@ -84,4 +96,11 @@ form{
 
 .row{
     height: 100px;
+}
+
+.text{
+    margin-left:15px;
+}
+.text span{
+    color:#66ccff;
 }
