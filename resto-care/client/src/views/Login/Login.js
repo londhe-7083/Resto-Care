@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
+import { currentUser } from '../../util/currentUser'
 import "./Login.css"
 
 
@@ -8,7 +9,6 @@ function Login() {
   const [password, setPassword] = useState('')
 
   useEffect(() =>{
-    const currentUser =JSON.parse(localStorage.getItem('currentUser'))
      if(currentUser){
       window.location.href="/"
      }
