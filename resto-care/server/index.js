@@ -11,6 +11,7 @@ const app = express();
 app.use(express.json());
 
 const PORT = process.env.PORT || 5000;
+mongoose.set("strictQuery",false);
 
 
 mongoose.connect(process.env.MONGODB_URL, () => {
@@ -22,18 +23,18 @@ mongoose.connect(process.env.MONGODB_URL, () => {
 app.post('/signup', async (req, res) => {
     const { name, phone, email, password, role } = req.body;
 
-    const emptyFields = [];
+    const emptyfields = [];
     
-    if (!name) emptyFields.push('name');  //two inputs jar blank astil tar he function donhi pan dakhwte
-    if (!phone) emptyFields.push('phone');
-    if (!email) emptyFields.push('email');
-    if (!password) emptyFields.push('password');
-    if (!role) emptyFields.push('role');
+    if (!name) emptyfields.push('name');  //two inputs jar blank astil tar he function donhi pan dakhwte
+    if (!phone) emptyfields.push('phone');
+    if (!email) emptyfields.push('email');
+    if (!password) emptyfields.push('password');
+    if (!role) emptyfields.push('role');
 
-    if (emptyFields.length > 0) {
+    if (emptyfields.length > 0) {
         return res.json({
             success: false,
-            message: `${emptyFields.join(' & ')} are required`
+            message: `${emptyfields.join(' , ')} are required`
         })
     }
 
@@ -102,7 +103,7 @@ app.post('/signup', async (req, res) => {
         role: role
     })
 
-    const saveUser = await user.save();
+    const saveUser = await User.save();
 
     res.json({
         success: true,
@@ -112,7 +113,7 @@ app.post('/signup', async (req, res) => {
 })
 
 
-app.post('/login', async (req, res) => {
+app.post('/login', async(req, res) => {
     const { email, password } = req.body;
 
     if (!email || !password) {
@@ -124,13 +125,13 @@ app.post('/login', async (req, res) => {
 
     const existingUser = await User.findOne({ email: email, password: password });
 
-    if (existingUser) {
+    if(existingUser) {
         return res.json({
             success: true,
             message: "Login successful",
-            data: "existingUser"
+            data: existingUser
         })
-    }//shubhamlondhe@g5mail.com
+    }
     else {
         return res.json({
             success: false,
@@ -186,6 +187,16 @@ app.get("/foodItems", async (req, res) => {
     res.json({
         success: true,
         message: " food items fetched successfully",
+        data: foodItems
+    })
+})
+
+app.get("/allFoodItems", async (req, res) => {
+    const foodItems = await FoodItem.find()
+     
+    res.json({
+        success: true,
+        message: " Food Items fetched successfully",
         data: foodItems
     })
 })

@@ -1,0 +1,15 @@
+/* import Rect from 'react'
+import './foodItemCard.css'
+
+function FoodItemCard({category, description, imgUrl,price,title}) { 
+return(
+    <div>
+    <div className=food-item-card>
+    <img src={}  />
+    </div>
+</div>
+
+)
+
+}
+export default FoodItemCard */

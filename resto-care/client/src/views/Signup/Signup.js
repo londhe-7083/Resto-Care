@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
+import swal from 'sweetalert';
+
 import { currentUser } from '../../util/currentUser'
 import "./Signup.css"
 
@@ -8,13 +10,13 @@ function Signup() {
   const [email, setEmail] = useState('')
   const [phone, setPhone] = useState('')
   const [password, setPassword] = useState('')
-  const [role, setRole] = useState('user') 
-  
-  useEffect(() =>{
-     if(currentUser){
-      window.location.href="/"
-     }
-     },[])  
+  const [role, setRole] = useState('user')
+
+  useEffect(() => {
+    if (currentUser) {
+      window.location.href = "/"
+    }
+  }, [])
 
 
   async function signupUser() {
@@ -28,12 +30,22 @@ function Signup() {
     })
     console.log(response.data)
     if (response.data.success) {
-      alert(response.data.success)
-      alert(response.data.message)
+
+      await swal({
+        title: "Good job!",
+        text: response.data.message,
+        icon: "success",
+        button: "Aww yiss!",
+      });
       window.location.href = '/login'
     }
     else {
-      alert(response.data.message)
+      swal({
+        title: "please try again!",
+        text: response.data.message,
+        icon: "error",
+        button: "Aww yiss!",
+      });    
       setName('')
       setEmail('')
       setPhone('')
@@ -58,16 +70,16 @@ function Signup() {
                 <img src={require('./images/avtaar.png')} alt='' ></img>
               </div>
               <form>
-              <h1 className='text-center '>Welcome</h1>
+                <h1 className='text-center '>Welcome</h1>
                 <div className='input-box input-box-a'>
-                <i class="fa-solid fa-user"></i>
+                  <i class="fa-solid fa-user"></i>
                   <label htmlFor='name'>Full Name: </label>
                   <input type='text' id='name' className='user-input' value={name}
                     onChange={(e) => setName(e.target.value)} />
                 </div>
 
                 <div className='input-box'>
-                <i class="fa-solid fa-envelope"></i>
+                  <i class="fa-solid fa-envelope"></i>
                   <label htmlFor='email'>Email Address: </label>
                   <input type='email' id='email' value=
                     {email} className='user-input' onChange={(e) => setEmail(e.target.value)} />
@@ -80,13 +92,13 @@ function Signup() {
                 </div>
 
                 <div className='input-box input-box-d '>
-                   <i class="fa-solid fa-lock"></i>
+                  <i class="fa-solid fa-lock"></i>
                   <label htmlFor='password'>Password: </label>
                   <input type='password' id='password' className='user-input' value={password} onChange={(e) => setPassword(e.target.value)} />
                 </div>
                 <div className='signup'>
-                  <button type='button' className='signup-button' onClick={signupUser}> Signup </button>
-                <h5 className='textline'> already have account? <span>Login</span></h5>
+                  <button type='button' className='signup-button' onClick={signupUser}> Signup </button>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
+                  <h5 className='textline'> already have an                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     account? <span>Login</span></h5>
                 </div>
               </form>
             </div>
