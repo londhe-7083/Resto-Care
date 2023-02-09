@@ -55,12 +55,14 @@ function logOut(){
       </div>
       
       <div className='food-items-result'>
+        <div className="row">
         {
           currentFoodItems?.map((foodItem ,index)=>{ 
-            return(<FoodItemCard category={foodItem.category} title={foodItem.title} price={foodItem.price} imgUrl={foodItem.imgUrl} key={index} /> 
+            return(<FoodItemCard description={foodItem.description} category={foodItem.category} title={foodItem.title} price={foodItem.price} imgUrl={foodItem.imgUrl} key={index} /> 
             )
          })
         }
+        </div>
         </div>
 
       <button type='button' className='btn btn-primary' onClick={logOut}> Logout </button>
