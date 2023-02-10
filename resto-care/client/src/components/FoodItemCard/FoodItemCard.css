@@ -1,15 +1,28 @@
+
 .food-item-card{
-    margin:5px;
-    border:  1px solid #ccc;
     width: 300px;
-    border-radius:5px;
-    box-shadow: 0 0 3px #808080;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    padding: 10px;
+}
+
+.food-item-card:hover
+{
+    border: 0.1rem solid rgb(232, 232, 232);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-color: rgb(255, 255, 255);
+    border-radius: 15px;
+
 }
 
 .food-item-card-header-img{
     width: 200px;
     height: 200px;
     object-fit: cover;
+    border:  1px solid #ccc;
+    border-radius:15px;
     margin: 5px;
     display: block;
     margin-left: auto;
@@ -29,6 +42,12 @@
     justify-content: center;
     border-radius: 30px;
     margin-top: 15px;
+}
+
+.fSXTKp{
+    border: 0.1rem solid rgb(232, 232, 232);
+    margin-top: 7px;
+    margin-bottom: 7px;
 }
 
 .qnt-btn{

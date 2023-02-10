@@ -52,6 +52,7 @@ function logOut(){
         <input type="text" placeholder='Search' className='input-search'
             value={searchText}
             onChange={(e) => setSearchText(e.target.value)}/>
+            <i class="fa-solid fa-magnifying-glass"></i>
       </div>
       
       <div className='food-items-result'>
