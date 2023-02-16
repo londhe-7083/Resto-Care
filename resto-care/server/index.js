@@ -1,21 +1,25 @@
-import express from 'express';
+// index.js is main file of our project
+import express from 'express';  //imported three libraries
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
-import User from './modules/User.js';
-import FoodItem from './modules/FoodItem.js';
-import Table from './modules/Table.js';
 dotenv.config();
 
 
-const app = express();
-app.use(express.json());
+import User from './modules/User.js';
+import FoodItem from './modules/FoodItem.js';
+import Table from './modules/Table.js';
+import Order from './modules/Order.js';
 
-const PORT = process.env.PORT || 5000;
+
+const app = express();
+app.use(express.json()); // passed midel wear of express.json
+
+const PORT = process.env.PORT || 5000;  // to read environement file port or print 5000
 mongoose.set("strictQuery",false);
 
 
 mongoose.connect(process.env.MONGODB_URL, () => {
-    console.log('Connected to MongoDB');
+    console.log('Connected to MongoDB');    // connection of mongoDB
 })
 
 //api routes starts here
@@ -280,9 +284,31 @@ app.get("/availableTable", async(req, res) =>{
     })
 });
 
+app.post("/orderFoodItems",async(req,res) => {
+    const {userId, tableNumber, items} = req.body
+
+    const totalOrders = await Order.countDocuments();
+    const orderId = totalOrders + 1;
+
+    const order = new Order({
+        orderId: orderId,
+        userId: userId,
+        tableNumber: tableNumber,
+        items: items
+        })
+
+    const saveOrder = await order.save();
+    
+    res.json({
+        success: true,
+        message: "Order placed successfully",
+        data: saveOrder
+    })
+})
+
 //api routes ends here
 
-app.listen(PORT, () => {
+app.listen(PORT, () => {              // app is listen for a specific port
     console.log(`Server is running on port ${PORT}`);
 
 })

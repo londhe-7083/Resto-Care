@@ -64,14 +64,14 @@ function Login() {
               <form>
                 <h1 className='text-center'>Welcome</h1>
                 <div className='input-box input-box-a'>
-                  <i class="fa-solid fa-envelope"></i>
+                  <i className="fa-solid fa-envelope"></i>
                   <label htmlFor='email'>Email Address: </label>
                   <input type='email' id='email' value=
                     {email} className='user-input' onChange={(e) => setEmail(e.target.value)} />
                 </div>
 
                 <div className='input-box input-box-b'>
-                  <i class="fa-solid fa-lock"></i>
+                  <i className="fa-solid fa-lock"></i>
                   <label htmlFor='password'>Password: </label>
                   <input type='password' id='password' className='user-input' value={password} onChange={(e) => setPassword(e.target.value)} />
                 </div>

@@ -4,6 +4,7 @@ import './Home.css'
 import FoodItemCard from '../../components/FoodItemCard/FoodItemCard'
 
 import {currentUser} from './../../util/currentUser'
+import { loginRequired } from '../../util/loginRequired'
 
 function Home() {
 
@@ -17,7 +18,7 @@ function Home() {
     setAllFoodItems(response.data.data)
   }
 
-  async function fetchSpecificItems(){
+  async function fetchSpecificItems(){ 
    console.log('fetching specific items')
    const response = await axios.get(`/foodItems?title=${searchText}`)
    console.log(response.data.data)
@@ -39,9 +40,10 @@ function logOut(){
     localStorage.removeItem('currentUser');
     window.location.htref= './login' }
 
-    if(!currentUser){
-      window.location.href='/login'
-    }
+
+    useEffect(()=> {
+        loginRequired()
+    }, [])
 
   return (
     <div>
@@ -52,7 +54,7 @@ function logOut(){
         <input type="text" placeholder='Search' className='input-search'
             value={searchText}
             onChange={(e) => setSearchText(e.target.value)}/>
-            <i class="fa-solid fa-magnifying-glass"></i>
+            <i className="fa-solid fa-magnifying-glass"></i>
       </div>
       
       <div className='food-items-result'>

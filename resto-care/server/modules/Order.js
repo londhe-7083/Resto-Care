@@ -1,10 +1,10 @@
-import { Schema, model } from "moongoose";
+import { Schema, model } from "mongoose";
 
 const orderSchema = new Schema({
     orderId: String,
     tableNumber: Number,
     userId: {
-        type: Schema,Type,Object,
+        type: Schema.Types.ObjectId,
         ref: "User"
     },
     items: [{

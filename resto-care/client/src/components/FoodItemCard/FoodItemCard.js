@@ -22,14 +22,14 @@ async function addToList(){
 }
 
   return (
-    <div className="col-md-3 food-item-card-container">
+    <div className="col-md-4 food-item-card-container">
       <div className="food-item-card">
       <div>
         <img src={imgUrl} className="food-item-card-header-img"/>
         </div>
-        <h2> {title} </h2>
-        <p>{description}</p>
-        <p>{price}</p>
+        <h4> {title} </h4>
+        <h5>{description}</h5>
+        <h5>{price}</h5>
         <span>{category}</span>
         <div className="sc-fGSyRc fSXTKp"></div>
         <div className='quantity-btn-container'>

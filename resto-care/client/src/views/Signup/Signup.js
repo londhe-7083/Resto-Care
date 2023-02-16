@@ -72,27 +72,27 @@ function Signup() {
               <form>
                 <h1 className='text-center '>Welcome</h1>
                 <div className='input-box input-box-a'>
-                  <i class="fa-solid fa-user"></i>
+                  <i className="fa-solid fa-user"></i>
                   <label htmlFor='name'>Full Name: </label>
                   <input type='text' id='name' className='user-input' value={name}
                     onChange={(e) => setName(e.target.value)} />
                 </div>
 
                 <div className='input-box'>
-                  <i class="fa-solid fa-envelope"></i>
+                  <i className="fa-solid fa-envelope"></i>
                   <label htmlFor='email'>Email Address: </label>
                   <input type='email' id='email' value=
                     {email} className='user-input' onChange={(e) => setEmail(e.target.value)} />
                 </div>
 
                 <div className='input-box'>
-                  <i class="fa-solid fa-phone"></i>
+                  <i className="fa-solid fa-phone"></i>
                   <label htmlFor='phone'> Phone: </label>
                   <input type='phone' id='phone' className='user-input' value={phone} onChange={(e) => setPhone(e.target.value)} />
                 </div>
 
                 <div className='input-box input-box-d '>
-                  <i class="fa-solid fa-lock"></i>
+                  <i className="fa-solid fa-lock"></i>
                   <label htmlFor='password'>Password: </label>
                   <input type='password' id='password' className='user-input' value={password} onChange={(e) => setPassword(e.target.value)} />
                 </div>
