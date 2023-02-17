@@ -1,12 +1,21 @@
 .search-container{
     display: flex;
     justify-content: center;
+    border: 1px solid #ccc;
+    width: 30%;
+    height: 35px;
+    margin: auto;
+    padding: auto;
 }
 
 .input-search{
     font-size: 25px;
     width: 400px;
-    margin: 5px;
-    padding: 5px;
+    border: 1px solid #ccc;
+}
 
+.searchsymb{
+    margin-top: -3px;
+    font-size: 21px;
+    padding: 10px;
 }

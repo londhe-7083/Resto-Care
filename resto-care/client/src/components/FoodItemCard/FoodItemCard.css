@@ -14,7 +14,6 @@
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     border-color: rgb(255, 255, 255);
     border-radius: 15px;
-
 }
 
 .food-item-card-header-img{
@@ -24,11 +23,32 @@
     border:  1px solid #ccc;
     border-radius:15px;
     margin: 5px;
+    padding: 10px;
     display: block;
     margin-left: auto;
     margin-right: auto;
+    transition: .1s;
 }
 
+.food-item-card-header-img:hover{
+    transform: scale(1.1);
+}
+
+h4{
+    font-size: 20px;
+    font-weight: 600;
+    padding-top: 6px;
+}
+
+.img-container{
+  padding: 10px;
+}
+
+
+h5, .category{
+    font-size: 15px;
+    font-weight: 500;
+}
 .btn-add-to-list{
     display: flex;
     margin-left: auto;
@@ -37,11 +57,11 @@
     background-color: #5f259f;
     font-size: 20px;
     border: none;
-    padding: 7px;
-    width: 180px;
+    padding: 4px;
+    width: 140px;
     justify-content: center;
     border-radius: 30px;
-    margin-top: 15px;
+    margin-top: 6px;
 }
 
 .fSXTKp{
@@ -54,10 +74,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 40px;
+    font-size: 34px;
     background-color:#5f259f ;
-    height: 40px;
-    width: 40px;
+    height: 34px;
+    width: 34px;
     border-radius: 50%;
     padding: 5px;
     cursor: pointer;
@@ -73,5 +93,4 @@
     justify-content: space-around;
     align-items: center;
 }
-
 

@@ -51,10 +51,10 @@ function logOut(){
       <h2>{currentUser?.name}</h2>
 
       <div className='search-container'>
-        <input type="text" placeholder='Search' className='input-search'
+      <i className="fa-solid fa-magnifying-glass searchsymb"></i>
+        <input  type="text" placeholder='Search' className='input-search'
             value={searchText}
             onChange={(e) => setSearchText(e.target.value)}/>
-            <i className="fa-solid fa-magnifying-glass"></i>
       </div>
       
       <div className='food-items-result'>

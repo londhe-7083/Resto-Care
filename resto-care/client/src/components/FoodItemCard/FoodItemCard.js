@@ -24,13 +24,13 @@ async function addToList(){
   return (
     <div className="col-md-4 food-item-card-container">
       <div className="food-item-card">
-      <div>
+      <div className='img-container'>
         <img src={imgUrl} className="food-item-card-header-img"/>
         </div>
         <h4> {title} </h4>
         <h5>{description}</h5>
         <h5>{price}</h5>
-        <span>{category}</span>
+        <span className='category'>{category}</span>
         <div className="sc-fGSyRc fSXTKp"></div>
         <div className='quantity-btn-container'>
          <span className='qnt-btn' onClick={(e)=>{setQuantity(quantity-1)}}>-</span>
