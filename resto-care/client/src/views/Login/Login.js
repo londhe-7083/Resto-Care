@@ -27,7 +27,7 @@ function Login() {
         title:"Success",
         text: response.data.message,
         icon: "success",
-        button: "Aww yiss!",
+        button: "Okk!",
       });
       localStorage.setItem('currentUser', JSON.stringify(response.data.data));
       window.location.href = "/"

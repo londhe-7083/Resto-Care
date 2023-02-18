@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import './Home.css'
 import FoodItemCard from '../../components/FoodItemCard/FoodItemCard'
+import Navbar from '../../components/Navbar/Navbar'
 
 import {currentUser} from './../../util/currentUser'
 import { loginRequired } from '../../util/loginRequired'
@@ -47,8 +48,7 @@ function logOut(){
 
   return (
     <div>
-      <h1 className='text-center'> Home </h1>
-      <h2>{currentUser?.name}</h2>
+      <Navbar  user={currentUser?.name}/>
 
       <div className='search-container'>
       <i className="fa-solid fa-magnifying-glass searchsymb"></i>
