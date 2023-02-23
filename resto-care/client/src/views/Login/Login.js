@@ -5,6 +5,9 @@ import swal from 'sweetalert';
 import { currentUser } from '../../util/currentUser'
 import "./Login.css"
 
+function createAc() {
+  window.location.href = "/signup"
+}
 
 function Login() {
   const [email, setEmail] = useState('')
@@ -77,8 +80,7 @@ function Login() {
                 </div>
                 <div>
                   <button type='button' className='login-button' onClick={loginUser}> Login </button>
-                  <h5 className='text'> Not registered?<span> Create an account  </span> </h5>
-
+                  <h5 className='text'> Not registered?<span onClick={createAc} > Create an account  </span> </h5>
                 </div>
               </form>
             </div>

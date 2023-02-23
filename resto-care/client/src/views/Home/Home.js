@@ -48,7 +48,7 @@ function logOut(){
 
   return (
     <div>
-      <Navbar  user={currentUser?.name}/>
+        <Navbar  user={currentUser?.name} />
 
       <div className='search-container'>
       <i className="fa-solid fa-magnifying-glass searchsymb"></i>

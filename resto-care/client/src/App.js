@@ -6,6 +6,7 @@ import Login from './views/Login/Login'
 import Signup from './views/Signup/Signup'
 import BookTable from './views/BookTable/BookTable'
 import MyOrders from './views/MyOrders/MyOrders'
+import MyList from './views/MyList/MyList'
 import Profile from './views/Profile/Profile' 
 function App() {
     return ( 
@@ -17,6 +18,7 @@ function App() {
         <Route path="/Signup" element={< Signup />} />
         <Route path="/BookTable" element={<BookTable/>} />
         <Route path="/myOrders" element={<MyOrders/>} />
+        <Route path="/MyList" element={<MyList/>} />
         <Route path="Profile" element={<Profile/>} />
         </Routes>
         </BrowserRouter>

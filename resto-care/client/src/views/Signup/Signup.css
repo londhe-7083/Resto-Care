@@ -73,7 +73,7 @@ form{
     color: white;
     display: block;
     margin-left: 29px;
-    width: 12vw;
+    width: 11vw;
     border-top-right-radius: 50px;
     border-top-left-radius: 16px;
     border-bottom-left-radius: 50px;
@@ -97,12 +97,14 @@ form{
 }
 
 .textline{
-    font-size: 11px;
+    font-size: 12px;
     padding-top: 19px;
+    font-weight: 600;
 }
 
 .textline span{
     color: #66ccff;
+    cursor: pointer;
 }
 
 .signup{
